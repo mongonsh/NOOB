@@ -2,6 +2,16 @@
 
 A voice-enabled emergency assistance application with real-time AI conversation capabilities.
 
+## Demo
+
+[![Watch Demo](https://img.youtube.com/vi/EjvtVxgrmr8/0.jpg)](https://youtu.be/EjvtVxgrmr8)
+
+[Watch the demo on YouTube](https://youtu.be/EjvtVxgrmr8)
+
+## Architecture
+
+![Architecture Diagram](architecture.png)
+
 ## Features
 
 - Real-time voice streaming with ElevenLabs
@@ -36,3 +46,10 @@ python app.py
 - ElevenLabs (voice synthesis)
 - Google Gemini (AI)
 - Firebase (storage)
+
+## AI Models
+
+- **Google Gemini 1.5 Flash** - Main conversational AI for emergency assistance
+- **Google Gemini 1.5 Pro** - Image analysis and document processing
+- **Mistral AI** - Alternative text generation
+- **ElevenLabs** - Voice synthesis and streaming

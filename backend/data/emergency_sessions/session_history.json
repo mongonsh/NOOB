@@ -288,5 +288,38 @@
     "transcript": [],
     "images": [],
     "documents_referenced": []
+  },
+  {
+    "session_id": "e0591df3-cb7b-4c1f-aeee-d46fc9384b61",
+    "user_id": "user-1772346758507",
+    "manual_id": null,
+    "start_time": "2026-03-01T15:32:38.511810",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "f50ab9e7-e957-4339-8fcb-69dc7088c161",
+    "user_id": "user-1772346790469",
+    "manual_id": null,
+    "start_time": "2026-03-01T15:33:10.470729",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "6dc8d167-4c3e-4fa5-8e6f-61c7cb1c2ccc",
+    "user_id": "user-1772347073288",
+    "manual_id": null,
+    "start_time": "2026-03-01T15:37:53.289571",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
   }
 ]
