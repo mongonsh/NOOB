@@ -1,0 +1,22 @@
+{
+  "name": "noob-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "phaser": "^3.70.0",
+    "socket.io-client": "^4.7.2"
+  },
+  "devDependencies": {
+    "@vitest/ui": "^4.0.18",
+    "jsdom": "^28.1.0",
+    "vite": "^5.4.0",
+    "vitest": "^4.0.18"
+  }
+}

@@ -1,0 +1,171 @@
+[
+  {
+    "session_id": "6b9fe1c1-7681-4cde-8207-d3b2b4073dba",
+    "user_id": "test-user",
+    "manual_id": "test-manual",
+    "start_time": "2026-03-01T13:18:13.442339",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "9720dc9b-755f-4170-addc-42ac8bbf1d57",
+    "user_id": "test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.443191",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "f7ecc140-cf3d-420b-9714-337d5aedd0b6",
+    "user_id": "test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.444350",
+    "end_time": "2026-03-01T13:18:13.444551",
+    "status": "ended",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "41838af2-e420-40a9-aed2-5b78ccbe6344",
+    "user_id": "user2",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.445400",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "8f98b677-f01e-4cbb-b315-4c5bea05d8e5",
+    "user_id": "user1",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.445200",
+    "end_time": "2026-03-01T13:18:13.445579",
+    "status": "ended",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "354f374c-3bc6-41cf-968b-4094bd02e8fc",
+    "user_id": "test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.446210",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "d5cee374-0e76-426d-b1ba-f3c8103d3ab8",
+    "user_id": "test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.446784",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "f7d4cbc0-d691-4c2f-b511-c44960290294",
+    "user_id": "test-user",
+    "manual_id": "test-manual",
+    "start_time": "2026-03-01T13:18:13.447300",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "53d4a490-55ab-499d-91a6-4c76a5b6808f",
+    "user_id": "test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.447818",
+    "end_time": "2026-03-01T13:18:13.448218",
+    "status": "ended",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "150f26e7-ffe7-4d13-acfc-1c247f108d82",
+    "user_id": "",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.448730",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "b4a71116-5b7e-4d1a-95e2-1f2416fae725",
+    "user_id": null,
+    "manual_id": null,
+    "start_time": "2026-03-01T13:18:13.448951",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "fa3b845d-13e3-4ebb-ac28-b2eb544c7dd4",
+    "user_id": "test_user",
+    "manual_id": "test_manual",
+    "start_time": "2026-03-01T13:27:20.057878",
+    "end_time": "2026-03-01T13:27:22.351299",
+    "status": "ended",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:27:20.058235",
+        "speaker": "user",
+        "text": "What should I do if I see a safety hazard?",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:27:22.349909",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a placeholder response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": "/api/emergency/audio/fa3b845d-13e3-4ebb-ac28-b2eb544c7dd4_95ace6cd-1c69-45eb-adca-f2c40df50aeb.mp3"
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "f5495aef-439d-406d-bdb6-27e91c38f897",
+    "user_id": "test_user",
+    "manual_id": "test_manual",
+    "start_time": "2026-03-01T13:29:29.634279",
+    "end_time": "2026-03-01T13:29:31.827155",
+    "status": "ended",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:29:29.634891",
+        "speaker": "user",
+        "text": "What should I do if I see a safety hazard?",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:29:31.826498",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a placeholder response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": "/api/emergency/audio/f5495aef-439d-406d-bdb6-27e91c38f897_0bec1e41-ec65-4e4e-95be-35fc62983f7d.mp3"
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  }
+]

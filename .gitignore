@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Logs
+*.log
+wandb/
+
+# Data files
+*.mp3
+*.wav
+backend/data/emergency_sessions/*.json
+backend/data/emergency_sessions/*.mp3
+backend/data/test_emergency_sessions/*.json
+backend/data/test_emergency_sessions/*.mp3
+!backend/data/emergency_sessions/.gitkeep
+!backend/data/test_emergency_sessions/.gitkeep
+!backend/data/emergency_sessions/session_history.json
+!backend/data/test_emergency_sessions/session_history.json
+
+# Uploads
+backend/uploads/*.pdf
+
+# Node modules (if frontend exists)
+node_modules/

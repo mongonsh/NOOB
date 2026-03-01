@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOOB — Safety Training Game</title>
+  <link rel="stylesheet" href="./styles/main.css" />
+  
+  <!-- Socket.IO Client Library - Using unpkg CDN for reliability -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" 
+          integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HeMKtGWzWXArXK/3S6EqUkGTLFV" 
+          crossorigin="anonymous"
+          onerror="console.error('Failed to load Socket.IO from CDN')"></script>
+  
+  <!-- Fallback to unpkg if primary CDN fails -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      if (typeof io === 'undefined') {
+        console.warn('Socket.IO not loaded from primary CDN, trying fallback...');
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/socket.io-client@4.7.2/dist/socket.io.min.js';
+        script.onerror = function() {
+          console.error('Failed to load Socket.IO from fallback CDN');
+        };
+        document.head.appendChild(script);
+      } else {
+        console.log('Socket.IO loaded successfully:', io.version);
+      }
+    });
+  </script>
+</head>
+<body>
+  <div id="game-container"></div>
+
+  <!-- Upload overlay — controlled by MenuScene -->
+  <div id="upload-overlay" class="hidden">
+    <div class="upload-box">
+      <div class="upload-icon">📄</div>
+      <h2>Drop Safety Manual PDF</h2>
+      <p>or click to browse</p>
+      <input type="file" id="pdf-input" accept=".pdf" />
+      <label for="pdf-input" class="file-btn">Choose PDF</label>
+      <div id="upload-status"></div>
+    </div>
+  </div>
+
+  <!-- Hidden audio element for TTS playback -->
+  <audio id="noob-audio" style="display:none"></audio>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Assistant - Transcript Display Test</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #0a0a1a;
+            color: #ffffff;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #ff6b6b;
+            text-align: center;
+        }
+        .instructions {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #4ecdc4;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #4ecdc4;
+            color: #0a0a1a;
+            border: none;
+            padding: 12px 24px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #3db8a8;
+            transform: scale(1.05);
+        }
+        button.danger {
+            background: #ff6b6b;
+        }
+        button.danger:hover {
+            background: #ff5252;
+        }
+        .console {
+            background: #12122a;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #888888;
+            min-height: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+            font-size: 14px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .timestamp {
+            color: #888888;
+            font-size: 12px;
+        }
+        .speaker {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .speaker.user {
+            color: #4ecdc4;
+        }
+        .speaker.assistant {
+            color: #ff6b6b;
+        }
+        .speaker.system {
+            color: #888888;
+        }
+        .text {
+            color: #e0e0e0;
+            line-height: 1.5;
+        }
+        .status {
+            background: #1a1a2e;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .status-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-dot.connected {
+            background: #4ecdc4;
+            box-shadow: 0 0 10px #4ecdc4;
+        }
+        .status-dot.disconnected {
+            background: #888888;
+        }
+        code {
+            background: #1a1a2e;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚨 Emergency Assistant - Transcript Display Test</h1>
+    
+    <div class="instructions">
+        <h3>📋 Test Instructions:</h3>
+        <ol>
+            <li>Click the scenario buttons below to simulate different emergency conversations</li>
+            <li>Watch the transcript display update in real-time</li>
+            <li>Verify that colors are correct (User=Green, Assistant=Orange, System=Gray)</li>
+            <li>Check that timestamps are formatted correctly</li>
+            <li>Test auto-scrolling with the "Long Conversation" scenario</li>
+            <li>Use "Clear Transcript" to reset and test again</li>
+        </ol>
+        <p><strong>Note:</strong> This is a standalone test page. To test the actual Emergency Scene, open the game and click "Emergency Assistant".</p>
+    </div>
+
+    <div class="status">
+        <div>
+            <span class="status-dot connected"></span>
+            <span>Status: Test Mode Active</span>
+        </div>
+        <div id="messageCount">Messages: 0</div>
+    </div>
+
+    <div class="button-group">
+        <button onclick="testScenario1()">🔧 Scenario 1: Machine Broken</button>
+        <button onclick="testScenario2()">⚠️ Scenario 2: Safety Hazard</button>
+        <button onclick="testScenario3()">🔥 Scenario 3: Emergency Stop</button>
+        <button onclick="testScenario4()">📊 Scenario 4: Long Conversation</button>
+        <button onclick="testScenario5()">🎯 Scenario 5: Quick Test</button>
+        <button class="danger" onclick="clearTranscript()">🗑️ Clear Transcript</button>
+    </div>
+
+    <div class="console" id="transcript"></div>
+
+    <script>
+        let messages = [];
+        let messageCount = 0;
+
+        function addMessage(speaker, text, delay = 0) {
+            setTimeout(() => {
+                const timestamp = new Date();
+                messages.push({ timestamp, speaker, text });
+                messageCount++;
+                updateTranscript();
+            }, delay);
+        }
+
+        function updateTranscript() {
+            const transcript = document.getElementById('transcript');
+            const messageCountEl = document.getElementById('messageCount');
+            
+            transcript.innerHTML = messages.map(msg => {
+                const time = msg.timestamp.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+                
+                return `
+                    <div class="message">
+                        <div class="timestamp">[${time}]</div>
+                        <div class="speaker ${msg.speaker}">${getSpeakerLabel(msg.speaker)}:</div>
+                        <div class="text">${msg.text}</div>
+                    </div>
+                `;
+            }).join('');
+            
+            messageCountEl.textContent = `Messages: ${messageCount}`;
+            
+            // Auto-scroll to bottom
+            transcript.scrollTop = transcript.scrollHeight;
+        }
+
+        function getSpeakerLabel(speaker) {
+            switch(speaker) {
+                case 'user': return 'You';
+                case 'assistant': return 'Assistant';
+                case 'system': return 'System';
+                default: return speaker;
+            }
+        }
+
+        function clearTranscript() {
+            messages = [];
+            messageCount = 0;
+            updateTranscript();
+        }
+
+        // Scenario 1: Machine Broken
+        function testScenario1() {
+            clearTranscript();
+            addMessage('system', 'Connection established. Emergency assistant ready.', 0);
+            addMessage('assistant', 'Hello! I\'m your safety assistant. What\'s the emergency?', 500);
+            addMessage('user', 'The machine is broken and making a loud grinding noise', 1500);
+            addMessage('assistant', 'I understand. A grinding noise can indicate a serious mechanical issue. Can you tell me which machine is affected?', 2500);
+            addMessage('user', 'It\'s the main conveyor belt motor', 3500);
+            addMessage('system', 'Analyzing safety manual for conveyor belt procedures...', 4000);
+            addMessage('assistant', 'According to your safety manual (Section 4.2 - Conveyor Systems), grinding noises typically indicate bearing failure or misalignment. For your safety, please follow these steps immediately:\n\n1. Press the emergency stop button\n2. Lock out and tag out the power source\n3. Clear the area and post warning signs\n4. Do NOT attempt to restart the machine\n5. Contact maintenance team immediately\n\nIs the machine stopped now?', 5500);
+            addMessage('user', 'Yes, I hit the emergency stop', 7000);
+            addMessage('assistant', 'Good job! You did the right thing. Now please:\n\n1. Ensure the lockout/tagout procedure is complete\n2. Document the incident (time, symptoms, actions taken)\n3. Call maintenance at extension 4567\n4. Stay in the area to brief the maintenance team\n\nDo you need help with anything else?', 8000);
+            addMessage('user', 'No, that\'s all. Thank you!', 9500);
+            addMessage('assistant', 'You\'re welcome! Stay safe. Ending session.', 10000);
+            addMessage('system', 'Session ended. Duration: 45 seconds', 10500);
+        }
+
+        // Scenario 2: Safety Hazard
+        function testScenario2() {
+            clearTranscript();
+            addMessage('system', 'Emergency session started', 0);
+            addMessage('assistant', 'Emergency assistant online. What do you need help with?', 500);
+            addMessage('user', 'There\'s oil leaking all over the floor near the hydraulic press', 1500);
+            addMessage('assistant', 'That\'s a serious slip hazard! Let me help you handle this safely. First, is anyone currently near the leak?', 2500);
+            addMessage('user', 'No, I cleared the area', 3500);
+            addMessage('assistant', 'Excellent! You\'re doing great. Now follow these steps:\n\n1. Place warning cones or barriers around the spill\n2. Post "CAUTION: SLIPPERY FLOOR" signs\n3. Do NOT attempt to clean it yourself\n4. Call the spill response team at extension 3456\n5. Shut down the hydraulic press if safe to do so\n\nCan you see where the leak is coming from?', 4500);
+            addMessage('user', 'It looks like it\'s coming from a hose connection', 6000);
+            addMessage('system', 'Searching safety database for hydraulic leak procedures...', 6500);
+            addMessage('assistant', 'A hose connection leak requires immediate attention. According to safety protocol:\n\n1. Verify the hydraulic press is powered off\n2. Release system pressure using the pressure relief valve\n3. Do NOT touch the leak - hydraulic fluid under pressure can cause injection injuries\n4. Keep everyone at least 10 feet away\n5. Wait for maintenance team\n\nHave you called the spill response team?', 7500);
+            addMessage('user', 'Yes, they\'re on their way', 9000);
+            addMessage('assistant', 'Perfect! You\'ve handled this situation very well. Stay in the area to brief the response team when they arrive. Is there anything else you need?', 9500);
+            addMessage('user', 'No, I\'m good. Thanks!', 10500);
+            addMessage('system', 'Session completed successfully', 11000);
+        }
+
+        // Scenario 3: Emergency Stop
+        function testScenario3() {
+            clearTranscript();
+            addMessage('system', 'EMERGENCY CONNECTION ESTABLISHED', 0);
+            addMessage('user', 'HELP! The machine won\'t stop!', 500);
+            addMessage('assistant', 'Stay calm! I\'m here to help. Which machine is it?', 1000);
+            addMessage('user', 'The packaging line - the emergency stop isn\'t working!', 1500);
+            addMessage('assistant', 'IMMEDIATE ACTION REQUIRED:\n\n1. LOCATE THE MAIN POWER DISCONNECT (red switch on wall)\n2. PULL IT DOWN NOW\n3. CLEAR THE AREA\n\nHave you found the main disconnect?', 2000);
+            addMessage('user', 'Yes! Pulling it now!', 3000);
+            addMessage('system', 'Critical safety procedure in progress...', 3200);
+            addMessage('user', 'It\'s off! The machine stopped!', 4000);
+            addMessage('assistant', 'EXCELLENT! You did the right thing. Now:\n\n1. Keep the power disconnect OFF\n2. Place a lock on it if available\n3. Post a "DO NOT OPERATE" sign\n4. Call your supervisor immediately\n5. Do NOT attempt to restart\n\nAre you safe? Is anyone injured?', 4500);
+            addMessage('user', 'Everyone is safe, no injuries', 5500);
+            addMessage('assistant', 'That\'s great news! The emergency stop button failure must be reported and repaired before the machine can be used again. Your quick thinking prevented a potential accident. Well done!', 6000);
+            addMessage('system', 'Incident logged. Maintenance notification sent.', 6500);
+        }
+
+        // Scenario 4: Long Conversation (tests scrolling)
+        function testScenario4() {
+            clearTranscript();
+            addMessage('system', 'Session initialized', 0);
+            addMessage('assistant', 'Hello! How can I assist you today?', 300);
+            addMessage('user', 'I need help with the forklift', 600);
+            addMessage('assistant', 'I can help with that. What seems to be the problem with the forklift?', 1000);
+            addMessage('user', 'It\'s making a beeping sound', 1400);
+            addMessage('assistant', 'Beeping sounds on forklifts usually indicate a warning. Can you describe the beeping pattern? Is it continuous or intermittent?', 1800);
+            addMessage('user', 'It\'s continuous and won\'t stop', 2200);
+            addMessage('system', 'Accessing forklift diagnostic database...', 2500);
+            addMessage('assistant', 'Continuous beeping typically indicates one of these issues:\n1. Low battery\n2. Overload warning\n3. Maintenance due\n4. Safety system alert\n\nCheck the display panel. What does it show?', 3000);
+            addMessage('user', 'It says "OVERLOAD"', 3800);
+            addMessage('assistant', 'The forklift is overloaded! This is a safety feature. You must:\n\n1. Stop using the forklift immediately\n2. Lower the load if it\'s elevated\n3. Remove some weight from the load\n4. Check the load capacity plate on the forklift\n\nWhat is the forklift\'s rated capacity?', 4200);
+            addMessage('user', 'It says 5000 lbs', 5000);
+            addMessage('assistant', 'And approximately how much does your current load weigh?', 5400);
+            addMessage('user', 'I think it\'s about 6000 lbs', 5800);
+            addMessage('assistant', 'That\'s 1000 lbs over capacity! This is very dangerous. Operating an overloaded forklift can cause:\n- Tip-over accidents\n- Brake failure\n- Steering problems\n- Structural damage\n\nYou must reduce the load immediately. Can you split it into two trips?', 6200);
+            addMessage('user', 'Yes, I can do that', 7000);
+            addMessage('assistant', 'Perfect! Here\'s what to do:\n1. Carefully lower the current load\n2. Remove approximately half the weight\n3. Make the first trip\n4. Return for the second load\n5. Never exceed the rated capacity\n\nRemember: It\'s always better to make an extra trip than risk an accident!', 7400);
+            addMessage('user', 'Got it. I\'ll split the load now', 8200);
+            addMessage('system', 'Safety reminder: Always check load weight before lifting', 8500);
+            addMessage('assistant', 'Great decision! Is there anything else you need help with?', 9000);
+            addMessage('user', 'No, that\'s all. Thanks for the help!', 9800);
+            addMessage('assistant', 'You\'re welcome! Stay safe out there!', 10200);
+            addMessage('system', 'Session ended. Total duration: 1 minute 42 seconds', 10700);
+        }
+
+        // Scenario 5: Quick Test
+        function testScenario5() {
+            clearTranscript();
+            addMessage('system', 'Test connection established', 0);
+            addMessage('user', 'Testing the transcript display', 500);
+            addMessage('assistant', 'Transcript display is working correctly! All colors and formatting are rendering as expected.', 1000);
+            addMessage('system', 'Test completed successfully', 1500);
+        }
+
+        // Show initial message
+        addMessage('system', 'Transcript display test ready. Click a scenario button to begin.', 0);
+    </script>
+</body>
+</html>

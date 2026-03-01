@@ -1,0 +1,292 @@
+[
+  {
+    "session_id": "3506f711-5acc-4949-84da-6ec6f247c902",
+    "user_id": "test-user-streaming",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:34:41.422869",
+    "end_time": "2026-03-01T13:34:43.851106",
+    "status": "ended",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:34:41.424097",
+        "speaker": "user",
+        "text": "What should I do in an emergency?",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:34:43.850151",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a streaming response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": null
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "e442a295-a28b-4e3e-881c-c3252b5cc7a7",
+    "user_id": "integration-test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:38:59.670038",
+    "end_time": "2026-03-01T13:39:06.164547",
+    "status": "ended",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:38:59.670468",
+        "speaker": "user",
+        "text": "Help!",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:39:02.104220",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a streaming response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:39:02.105620",
+        "speaker": "user",
+        "text": "What should I do in an emergency?",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:39:04.142446",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a streaming response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:39:04.143548",
+        "speaker": "user",
+        "text": "I need detailed instructions on how to handle a safety incident with multiple steps and considerations.",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:39:06.163365",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a streaming response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": null
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "64e72686-397f-47a0-8c3b-15171485f2f7",
+    "user_id": "performance-test-user",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:39:06.164912",
+    "end_time": "2026-03-01T13:39:08.244075",
+    "status": "ended",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:39:06.165233",
+        "speaker": "user",
+        "text": "What are the safety procedures?",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:39:08.243182",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a streaming response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": null
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "018ca5f7-e87b-45c8-87f2-13d4ed33562c",
+    "user_id": "user-1772340758801",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:52:38.802198",
+    "end_time": null,
+    "status": "active",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:52:58.731391",
+        "speaker": "user",
+        "text": "hey",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:53:01.223196",
+        "speaker": "assistant",
+        "text": "I'm here to help! This is a placeholder response. Full AI integration with safety document search and intelligent responses will be added in the next phase.",
+        "audio_url": "/api/emergency/audio/018ca5f7-e87b-45c8-87f2-13d4ed33562c_2aa6b9a5-4de2-4eac-aa1c-7139669e493e.mp3"
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "5ff451ee-2bb0-4da8-bc45-13d58b01b982",
+    "user_id": "user-1772341091505",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:58:11.507070",
+    "end_time": null,
+    "status": "active",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T13:58:30.212618",
+        "speaker": "user",
+        "text": "[Audio transcription placeholder]",
+        "audio_url": null
+      },
+      {
+        "timestamp": "2026-03-01T13:58:54.601793",
+        "speaker": "user",
+        "text": "[Audio transcription placeholder]",
+        "audio_url": null
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "41ed3c3e-186f-4de3-a676-ea33423fe27e",
+    "user_id": "user-1772341173065",
+    "manual_id": null,
+    "start_time": "2026-03-01T13:59:33.066172",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "a88676b1-c5db-40c2-a60e-bbef9c994547",
+    "user_id": "user-1772341339482",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:02:19.483977",
+    "end_time": null,
+    "status": "active",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T14:02:51.313539",
+        "speaker": "user",
+        "text": "[Audio transcription placeholder]",
+        "audio_url": null
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "537d7459-aa7f-4e16-8d72-abc9cde0d78a",
+    "user_id": "user-1772341465593",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:04:25.595220",
+    "end_time": null,
+    "status": "active",
+    "transcript": [
+      {
+        "timestamp": "2026-03-01T14:04:30.689702",
+        "speaker": "user",
+        "text": "[Audio transcription placeholder]",
+        "audio_url": null
+      }
+    ],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "9f84aa44-1d05-4610-b598-71e803358d86",
+    "user_id": "user-1772341731794",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:08:51.796430",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "64e7954d-3600-4d9d-8fe7-5f7d8aae5393",
+    "user_id": "user-1772341841678",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:10:41.679461",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "4ffc3c76-f77f-43b3-940f-9b6952d2920b",
+    "user_id": "user-1772342023135",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:13:43.136741",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "abf05ddb-57c6-4bba-b19c-34a76f988d0f",
+    "user_id": "user-1772342024188",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:13:44.189911",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "06b5d1b6-44d2-4669-bcfe-7029b9a8b601",
+    "user_id": "user-1772342030038",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:13:50.039501",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "731bf336-ad47-40cc-8f23-b630cb4e3847",
+    "user_id": "user-1772342654651",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:24:14.652933",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "ec2004d6-569d-48f5-8593-3278d17eb8f7",
+    "user_id": "user-1772343211127",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:33:31.128027",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "46067b2d-5a78-42f7-9543-96acd1098270",
+    "user_id": "user-1772343220756",
+    "manual_id": null,
+    "start_time": "2026-03-01T14:33:40.757836",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  },
+  {
+    "session_id": "5e67968a-35c9-4d71-8799-5078e1ed25f3",
+    "user_id": "user-1772345301611",
+    "manual_id": null,
+    "start_time": "2026-03-01T15:08:21.621644",
+    "end_time": null,
+    "status": "active",
+    "transcript": [],
+    "images": [],
+    "documents_referenced": []
+  }
+]

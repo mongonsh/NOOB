@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket.IO Connection Test</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #0a0a1a;
+      color: #4ecdc4;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #ff6b6b;
+    }
+    .test-section {
+      background: #12122a;
+      border: 2px solid #4ecdc4;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .status {
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+    .success {
+      background: #2d5f2e;
+      color: #4ecdc4;
+    }
+    .error {
+      background: #5f2d2d;
+      color: #ff6b6b;
+    }
+    .warning {
+      background: #5f4f2d;
+      color: #ffa500;
+    }
+    button {
+      background: #4ecdc4;
+      color: #0a0a1a;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-family: 'Courier New', monospace;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 5px;
+    }
+    button:hover {
+      background: #3db8b3;
+    }
+    #log {
+      background: #0a0a1a;
+      border: 1px solid #4ecdc4;
+      padding: 10px;
+      height: 300px;
+      overflow-y: auto;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .log-entry {
+      margin: 5px 0;
+      padding: 5px;
+      border-left: 3px solid #4ecdc4;
+      padding-left: 10px;
+    }
+    .log-error {
+      border-left-color: #ff6b6b;
+      color: #ff6b6b;
+    }
+    .log-success {
+      border-left-color: #4ecdc4;
+      color: #4ecdc4;
+    }
+    .log-info {
+      border-left-color: #888;
+      color: #888;
+    }
+  </style>
+  
+  <!-- Socket.IO Client Library -->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js" 
+          integrity="sha384-mZLF4UVrpi/QTWPA7BjNPEnkIfRFn4ZEO3Qt/HeMKtGWzWXArXK/3S6EqUkGTLFV" 
+          crossorigin="anonymous"
+          onerror="logError('Failed to load Socket.IO from primary CDN')"></script>
+  
+  <!-- Fallback CDN -->
+  <script>
+    function logMessage(message, type = 'info') {
+      const log = document.getElementById('log');
+      if (log) {
+        const entry = document.createElement('div');
+        entry.className = `log-entry log-${type}`;
+        entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        log.appendChild(entry);
+        log.scrollTop = log.scrollHeight;
+      }
+      console.log(message);
+    }
+    
+    function logError(message) {
+      logMessage(message, 'error');
+    }
+    
+    function logSuccess(message) {
+      logMessage(message, 'success');
+    }
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      if (typeof io === 'undefined') {
+        logError('Socket.IO not loaded from primary CDN, trying fallback...');
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/socket.io-client@4.7.2/dist/socket.io.min.js';
+        script.onload = function() {
+          logSuccess('Socket.IO loaded from fallback CDN');
+          checkSocketIO();
+        };
+        script.onerror = function() {
+          logError('Failed to load Socket.IO from fallback CDN');
+          updateStatus('library-status', 'Socket.IO library failed to load', 'error');
+        };
+        document.head.appendChild(script);
+      } else {
+        logSuccess('Socket.IO loaded from primary CDN');
+        checkSocketIO();
+      }
+    });
+    
+    function updateStatus(id, message, type) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = message;
+        element.className = `status ${type}`;
+      }
+    }
+    
+    function checkSocketIO() {
+      if (typeof io !== 'undefined') {
+        updateStatus('library-status', '✅ Socket.IO library loaded successfully', 'success');
+        logSuccess(`Socket.IO version: ${io.version}`);
+      } else {
+        updateStatus('library-status', '❌ Socket.IO library not available', 'error');
+        logError('Socket.IO is undefined');
+      }
+    }
+    
+    function testConnection() {
+      logMessage('Testing connection to backend...', 'info');
+      
+      if (typeof io === 'undefined') {
+        updateStatus('connection-status', '❌ Cannot test - Socket.IO not loaded', 'error');
+        logError('Socket.IO library not available');
+        return;
+      }
+      
+      updateStatus('connection-status', '⏳ Connecting to http://localhost:5001...', 'warning');
+      
+      const socket = io('http://localhost:5001', {
+        transports: ['websocket', 'polling'],
+        timeout: 5000
+      });
+      
+      socket.on('connect', () => {
+        updateStatus('connection-status', '✅ Connected to backend successfully', 'success');
+        logSuccess('Connected to backend server');
+        logSuccess(`Socket ID: ${socket.id}`);
+        
+        // Test emergency connection
+        socket.emit('emergency:connect', {
+          userId: 'test-user',
+          manualId: null
+        });
+      });
+      
+      socket.on('emergency:started', (data) => {
+        logSuccess('Emergency session started');
+        logSuccess(`Session ID: ${data.sessionId}`);
+        
+        // Clean up
+        setTimeout(() => {
+          socket.emit('emergency:end', { sessionId: data.sessionId });
+          socket.disconnect();
+          logMessage('Test complete, disconnected', 'info');
+        }, 1000);
+      });
+      
+      socket.on('connect_error', (error) => {
+        updateStatus('connection-status', '❌ Connection failed: ' + error.message, 'error');
+        logError(`Connection error: ${error.message}`);
+      });
+      
+      socket.on('connect_timeout', () => {
+        updateStatus('connection-status', '❌ Connection timeout', 'error');
+        logError('Connection timeout - server not responding');
+      });
+      
+      socket.on('error', (error) => {
+        logError(`Socket error: ${error}`);
+      });
+    }
+    
+    function clearLog() {
+      const log = document.getElementById('log');
+      if (log) {
+        log.innerHTML = '';
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>🔌 Socket.IO Connection Test</h1>
+  
+  <div class="test-section">
+    <h2>1. Library Status</h2>
+    <div id="library-status" class="status warning">⏳ Checking Socket.IO library...</div>
+  </div>
+  
+  <div class="test-section">
+    <h2>2. Backend Connection</h2>
+    <div id="connection-status" class="status warning">⏳ Not tested yet</div>
+    <button onclick="testConnection()">Test Connection</button>
+  </div>
+  
+  <div class="test-section">
+    <h2>3. Event Log</h2>
+    <button onclick="clearLog()">Clear Log</button>
+    <div id="log"></div>
+  </div>
+  
+  <div class="test-section">
+    <h2>Troubleshooting</h2>
+    <ul>
+      <li>Ensure backend server is running: <code>cd noob/backend && python app.py</code></li>
+      <li>Check browser console for detailed errors (F12)</li>
+      <li>Verify internet connection for CDN access</li>
+      <li>Try clearing browser cache and hard reload</li>
+      <li>Check firewall settings for localhost:5001</li>
+    </ul>
+  </div>
+</body>
+</html>
